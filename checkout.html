@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Trevelo</title>
+    <link rel="stylesheet" href="checkout.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                   <a href="index.html"><img src="images/logo.png" alt="Trevelo Logo" class="logo-img"></a>
+                </div>
+                <div class="checkout-steps">
+                    <span class="step active">Checkout</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="checkout-container">
+            <!-- Interactive Cart Section (Formerly Order Summary) -->
+            <div class="interactive-cart-section">
+                <h2>Your Cart</h2>
+                <div id="checkoutCartItems">
+                    <!-- Cart items will be dynamically loaded here -->
+                </div>
+                <div class="add-more-items">
+                    <a href="index.html"><i class="fas fa-plus-circle"></i> Add more items</a>
+                </div>
+                <div class="order-totals">
+                    <div class="total-row">
+                        <span>Subtotal:</span>
+                        <span>৳<span id="subtotal">0.00</span></span>
+                    </div>
+                    <div class="total-row">
+                        <span>Shipping Charge:</span>
+                        <span>৳<span id="shipping">150.00</span></span>
+                    </div>
+                    <div class="total-row total-final">
+                        <span><strong>Total:</strong></span>
+                        <span><strong>৳<span id="finalTotal">0.00</span></strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer and Payment Section -->
+            <div class="customer-payment-section">
+                <!-- Payment Methods -->
+                <div class="payment-methods-box">
+                    <h2>পেমেন্ট করুন</h2>
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <div class="method-header"><img src="https://seeklogo.com/images/B/bkash-logo-835789094A-seeklogo.com.png" alt="bKash" class="payment-logo"><span>bKash</span></div>
+                            <div class="method-number">01710-147128</div>
+                        </div>
+                        <div class="payment-method">
+                            <div class="method-header"><img src="https://seeklogo.com/images/N/nagad-logo-7A70CCFEE0-seeklogo.com.png" alt="Nagad" class="payment-logo"><span>Nagad</span></div>
+                            <div class="method-number">01710-147128</div>
+                        </div>
+                        <div class="payment-method">
+                            <div class="method-header"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Rocket_mobile_banking_logo.svg/320px-Rocket_mobile_banking_logo.svg.png" alt="Rocket" class="payment-logo"><span>Rocket</span></div>
+                            <div class="method-number">01710-147128</div>
+                        </div>
+                        <div class="payment-method">
+                            <div class="method-header"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Upay_logo.svg/1200px-Upay_logo.svg.png" alt="Upay" class="payment-logo"><span>Upay</span></div>
+                            <div class="method-number">01710-147128</div>
+                        </div>
+                    </div>
+                    <div class="payment-note">
+                        <div class="note-header"><i class="fas fa-exclamation-triangle"></i><strong>গুরুত্বপূর্ণ নোট:</strong></div>
+                        <p>উপরের যেকোনো পার্সোনাল নম্বরে আপনার মোট বিল 'সেন্ড মানি' করুন। পেমেন্ট করার পর নিচের ফর্মটি পূরণ করে সাবমিট করুন।</p>
+                    </div>
+                </div>
+
+                <!-- Payment Form -->
+                <div class="payment-form-box">
+                    <h2>পেমেন্ট তথ্য সাবমিট করুন</h2>
+                    <form id="paymentForm" class="payment-form">
+                        <div class="form-group full-width">
+                            <label for="customerName">আপনার নাম *</label>
+                            <input type="text" id="customerName" name="customerName" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="customerPhone">মোবাইল নম্বর *</label>
+                            <input type="tel" id="customerPhone" name="customerPhone" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="customerAddress">সম্পূর্ণ ঠিকানা *</label>
+                            <textarea id="customerAddress" name="customerAddress" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="paymentMethod">পেমেন্ট মেথড *</label>
+                            <select id="paymentMethod" name="paymentMethod" required>
+                                <option value="">নির্বাচন করুন</option>
+                                <option value="bKash">bKash</option>
+                                <option value="Nagad">Nagad</option>
+                                <option value="Rocket">Rocket</option>
+                                <option value="Upay">Upay</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="transactionId">ট্রানজেকশন আইডি *</label>
+                            <input type="text" id="transactionId" name="transactionId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="senderNumber">যে নম্বর থেকে পাঠিয়েছেন *</label>
+                            <input type="tel" id="senderNumber" name="senderNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="paidAmount">পেমেন্ট করা পরিমাণ *</label>
+                            <input type="number" id="paidAmount" name="paidAmount" required readonly>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="orderNotes">অতিরিক্ত নোট (ঐচ্ছিক)</label>
+                            <textarea id="orderNotes" name="orderNotes" rows="2"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            অর্ডার সাবমিট করুন
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float -->
+    <div class="whatsapp-float" onclick="openWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="success-content">
+                <i class="fas fa-check-circle"></i>
+                <h2>অর্ডার সফল হয়েছে!</h2>
+                <p>আপনার অর্ডারটি সফলভাবে সাবমিট হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।</p>
+                <div class="order-id">
+                    <strong>Your Order ID: <span id="generatedOrderId"></span></strong>
+                </div>
+                <button onclick="goToHome()" class="home-btn">হোম পেজে ফিরুন</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="checkout.js"></script>
+</body>
+</html>
