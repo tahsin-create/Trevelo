@@ -1,5 +1,5 @@
 let checkoutCart = [];
-const shippingCharge = 60;
+const shippingCharge = 150;
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzzgyzno'; // Replace with your Formspree ID
 
 document.addEventListener('DOMContentLoaded', function() {
